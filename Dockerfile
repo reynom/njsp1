@@ -1,5 +1,5 @@
 #  Base image with node npm
-FROM node:16-alpine
+FROM node:18-alpine
 #  Make working directory
 RUN mkdir -p /app
 WORKDIR /app
