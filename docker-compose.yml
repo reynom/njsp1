@@ -1,0 +1,24 @@
+version: '1.1'
+
+networks:
+  proxy:
+    external: true
+
+services:
+  nexttest:
+    build: .
+    networks:
+      - proxy
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nexttest.rule=Host(`njsp1.muldoon.eu`)"
+      - "traefik.http.routers.nexttest.entrypoints=websecure"
+      - "traefik.http.routers.nexttest.tls.certresolver=letsencrypt"
+      - "traefik.http.services.nexttest.loadbalancer.server.port=3000" # facultative (traefik will use the first exposed port by default)
+      - "traefik.http.routers.nexttest.tls=true"
+
+
+
+
+
