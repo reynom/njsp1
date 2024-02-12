@@ -11,14 +11,9 @@ services:
       - proxy
     restart: always
     labels:
-      - "proxy.enable=true"
-      - "proxy.http.routers.njsp1.rule=Host(`njsp1.muldoon.eu`)"
-      - "proxy.http.routers.njsp1.entrypoints=websecure"
-      - "proxy.http.routers.njsp1.tls.certresolver=letsencrypt"
-      - "proxy.http.services.njsp1.loadbalancer.server.port=3000" # facultative (proxy will use the first exposed port by default)
-      - "proxy.http.routers.njsp1.tls=true"
-
-
-
-
-
+      - "traefik.enable=true"
+      - "traefik.http.routers.njsp1.rule=Host(`njsp1.muldoon.eu`)"
+      - "traefik.http.routers.njsp1.entrypoints=websecure"
+      - "traefik.http.routers.njsp1.tls.certresolver=letsencrypt"
+      - "traefik.http.services.njsp1.loadbalancer.server.port=3000" # facultative (traefik will use the first exposed port by default)
+      - "traefik.http.routers.njsp1.tls=true"
